@@ -1,0 +1,94 @@
+@import "../../css-config/mixins.scss";
+
+//ye jo hum ek class ke under dusri likh pa rhe  hye new feature h jise nesting bolte h
+.main-header{
+    width: 100%;
+    padding: 0 20px;
+    background-color: #212121; //hexavalue bolte h
+    color:white;
+    border-bottom: 1px solid rgba(0,0,0,0.1);  // rgba 4 values leta h jisme starting 3 for color and 4th one is for opesity
+    z-index: 99;
+   
+    @include md{
+        padding: 0 40px;
+    }
+    
+    .header-content{
+        display: flex;
+        justify-content: space-between;  //space between means equally divide hona
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        @include md {
+            height: 80px;
+        }
+        .left{
+            list-style-type: none;
+            display: none;     //mobile me none kra h 
+            gap: 25px;
+            @include md{
+                display: flex;  //laptop screen ke liye 
+            }
+            li{
+                font-size: 14px;
+                font-weight: 600;
+                text-transform: uppercase;
+                cursor:pointer ;
+            }
+        }
+        .center{
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            @include md{
+                font-size: 32px;
+                position: absolute;
+                left: 50%;
+                transform:translateX(-50%)
+            }
+
+        }
+        .right{
+            display: flex;
+            align-items: center;
+            gap:20px;
+            @include md{
+                gap:25px;
+            }
+            svg{  //svg means jo icons h unko svg format m h to unko hum direct svg likh kr accesss kr skte h
+                font-size: 20px;
+                cursor: pointer;
+                @include md{
+                    font-size: 24px;
+                }
+                 
+            }
+            .cart-icon{
+                position: relative;
+                span{
+                    min-width: 20px;
+                    text-align: center;
+                    background-color: red;
+                    padding: 2.5px;
+                    position: absolute;
+                    top: -5px;
+                    right: -12px;
+                    font-size: 12px;
+                    line-height: 1;
+                    border-radius: 10px;
+                }
+            }
+
+        }
+    }
+    &.sticky-header{
+        position: sticky;
+        top: 0;
+        animation: stickyHeader 0.3s ease forwards;    //forwards add krne s baad m animation ruk jati h 
+    }
+}
+
+@keyframes stickyHeader {
+    0% { transform: translateY(-80px)}
+    100% { transform: translateY(0)}
+}
